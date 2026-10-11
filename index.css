@@ -1,22 +1,23 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: #f3f4f6;
-  color: #1f2937;
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1s infinite;
 }
 
-* {
-  box-sizing: border-box;
-}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
 
-a {
-  text-decoration: none;
-}
+  50% {
+    opacity: 0.3;
+  }
 
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
+  100% {
+    opacity: 1;
+  }
 }

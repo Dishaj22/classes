@@ -122,21 +122,33 @@
 
 // export default App;
 
-import { useState } from "react";
-import PostList from "./PostList";
+// import { useState } from "react";
+// import PostList from "./PostList";
+
+// function App() {
+//   const [showPosts, setShowPosts] = useState(true);
+
+//   return (
+//     <div>
+//       <h1>React Query Stale Time</h1>
+
+//       <button onClick={() => setShowPosts(!showPosts)}>
+//         {showPosts ? "Hide Posts" : "Show Posts"}
+//       </button>
+
+//       {showPosts && <PostList />}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import CryptoTracker from "./CryptoTracker";
 
 function App() {
-  const [showPosts, setShowPosts] = useState(true);
-
   return (
     <div>
-      <h1>React Query Stale Time</h1>
-
-      <button onClick={() => setShowPosts(!showPosts)}>
-        {showPosts ? "Hide Posts" : "Show Posts"}
-      </button>
-
-      {showPosts && <PostList />}
+      <CryptoTracker />
     </div>
   );
 }
