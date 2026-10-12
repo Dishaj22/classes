@@ -143,15 +143,29 @@
 
 // export default App;
 
-import CryptoTracker from "./CryptoTracker";
+// import CryptoTracker from "./CryptoTracker";
+
+// function App() {
+//   return (
+//     <div>
+//       <CryptoTracker />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import TodoList from "./TodoList";
 
 function App() {
   return (
     <div>
-      <CryptoTracker />
+      <h1>My Todo App</h1>
+      <TodoList />
     </div>
   );
 }
 
 export default App;
+
 

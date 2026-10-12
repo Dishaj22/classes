@@ -1,0 +1,38 @@
+
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Learn React Query",
+      "body": "React Query makes data fetching easy.",
+      "userId": 1
+    },
+    {
+      "id": "2",
+      "title": "Learn JSON Server",
+      "body": "JSON Server provides a mock REST API.",
+      "userId": 1
+    }
+  ],
+  "todos": [
+    {
+      "id": "1",
+      "title": "Setup JSON Server",
+      "completed": true,
+      "userId": 1
+    },
+    {
+      "id": "2",
+      "title": "Learn useQuery",
+      "completed": false,
+      "userId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Aditya",
+      "email": "aditya@example.com"
+    }
+  ]
+}
