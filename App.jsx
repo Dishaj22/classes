@@ -156,12 +156,15 @@
 // export default App;
 
 import TodoList from "./TodoList";
+import CreatePostForm from "./CreatePostForm"
 
 function App() {
   return (
     <div>
       <h1>My Todo App</h1>
       <TodoList />
+      <hr/>
+      <CreatePostForm/>
     </div>
   );
 }
