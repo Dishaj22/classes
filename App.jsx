@@ -172,18 +172,35 @@
 // export default App;
 
 
-import CreatePostForm from "./CreatePostForm";
-import PostList from "./PostList";
+// import CreatePostForm from "./CreatePostForm";
+// import PostList from "./PostList";
 
-function App(){
+// function App(){
+//   return (
+//     <div>
+//       <h1>My Posts App</h1>
+//       <CreatePostForm/>
+//       <hr/>
+//       <PostList/>
+//     </div>
+//   )
+// }
+// export default App;
+
+
+import LikeButton from "./LikeButton.jsx";
+
+function App() {
   return (
     <div>
-      <h1>My Posts App</h1>
-      <CreatePostForm/>
-      <hr/>
-      <PostList/>
+      <h1>My Post</h1>
+      <p>This is my sample post.</p>
+
+      <LikeButton postId={1} likeCount={5} />
     </div>
-  )
+  );
 }
+
 export default App;
+
 
