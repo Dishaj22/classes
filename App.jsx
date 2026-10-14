@@ -155,20 +155,35 @@
 
 // export default App;
 
-import TodoList from "./TodoList";
-import CreatePostForm from "./CreatePostForm"
+// import TodoList from "./TodoList";
+// import CreatePostForm from "./CreatePostForm"
 
-function App() {
+// function App() {
+//   return (
+//     <div>
+//       <h1>My Todo App</h1>
+//       <TodoList />
+//       <hr/>
+//       <CreatePostForm/>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+import CreatePostForm from "./CreatePostForm";
+import PostList from "./PostList";
+
+function App(){
   return (
     <div>
-      <h1>My Todo App</h1>
-      <TodoList />
-      <hr/>
+      <h1>My Posts App</h1>
       <CreatePostForm/>
+      <hr/>
+      <PostList/>
     </div>
-  );
+  )
 }
-
 export default App;
-
 

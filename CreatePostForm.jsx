@@ -1,88 +1,63 @@
-
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 function CreatePostForm() {
   const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
 
-  const createPostFn = async (newPost) => {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts`,
-      {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (newPost) =>
+      fetch("https://jsonplaceholder.typicode.com/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newPost),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to create post");
-    }
-
-    return response.json();
-  };
-
-  const mutation = useMutation({
-    mutationFn: createPostFn,
+      }).then((res) => res.json()),
 
     onSuccess: () => {
-      alert("Post created successfully!");
+      queryClient.invalidateQueries({
+        queryKey: ["posts"],
+      });
+
       setTitle("");
-      setBody("");
     },
   });
 
-  const { isPending, isError, error, data } = mutation;
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    mutation.mutate({ title, body });
-  };
+    mutation.mutate({
+      title: title,
+      body: "My new post",
+      userId: 1,
+    });
+  }
 
   return (
     <div>
       <h2>Create Post</h2>
 
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-            placeholder="Enter post title"
-            required
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Enter post title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
 
-        <br />
-
-        <div>
-          <label>Body:</label>
-          <textarea
-            value={body}
-            onChange={(event) => setBody(event.target.value)}
-            placeholder="Enter post body"
-            required
-          />
-        </div>
-
-        <br />
-
-        <button type="submit" disabled={isPending}>
-          {isPending ? "Creating..." : "Create Post"}
+        <button type="submit">
+          Create Post
         </button>
       </form>
 
-      {isError && <p>Error: {error.message}</p>}
+      {mutation.isPending && <p>Creating post...</p>}
 
-      {data && (
-        <p>Created post ID: {data.id}</p>
-      )}
+      {mutation.isSuccess && <p>Post created!</p>}
+
+      {mutation.isError && <p>Something went wrong!</p>}
     </div>
   );
 }
